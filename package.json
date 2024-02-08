@@ -1,0 +1,22 @@
+{
+  "name": "hes-otomotiv-user-interface",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "next": "13.4.6",
+    "react": "18.2.0",
+    "react-carousel": "^4.3.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.9.0",
+    "react-image-gallery": "^1.2.12",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1"
+  }
+}
