@@ -1,0 +1,14 @@
+{
+  "/favicon.ico/route": "/favicon.ico",
+  "/_not-found": "/_not-found",
+  "/page": "/",
+  "/[urunDetay]/page": "/[urunDetay]",
+  "/hakkimizda/page": "/hakkimizda",
+  "/arama/page": "/arama",
+  "/iletisim/page": "/iletisim",
+  "/teslimat/page": "/teslimat",
+  "/urunler/page": "/urunler",
+  "/urunler/[seri]/page": "/urunler/[seri]",
+  "/urunler/[seri]/[araba]/page": "/urunler/[seri]/[araba]",
+  "/urunler/[seri]/[araba]/[kategori]/page": "/urunler/[seri]/[araba]/[kategori]"
+}
