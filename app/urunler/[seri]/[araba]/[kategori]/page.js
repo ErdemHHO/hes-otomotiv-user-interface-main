@@ -15,7 +15,7 @@ async function getData(araba, kategori) {
 	const res = await fetch(
 		`https://server-hesotomotiv.net/api/user/products/car/${carSlug}/category/${categorySlug}`,
 		{
-			cache: 'no-store',
+			next: { revalidate: 86400 },
 		}
 	);
 
@@ -26,7 +26,7 @@ async function getCategoryData() {
 	const res = await fetch(
 		'https://server-hesotomotiv.net/api/user/categories',
 		{
-			cache: 'no-store',
+			next: { revalidate: 86400 },
 		}
 	);
 
@@ -42,7 +42,7 @@ async function getCarData(araba) {
 	const res = await fetch(
 		`https://server-hesotomotiv.net/api/user/cars/${slug}`,
 		{
-			cache: 'no-store',
+			next: { revalidate: 86400 },
 		}
 	);
 
@@ -58,7 +58,7 @@ async function getSeriData(seri) {
 	const res = await fetch(
 		`https://server-hesotomotiv.net/api/user/series/${slug}`,
 		{
-			cache: 'no-store',
+			next: { revalidate: 86400 },
 		}
 	);
 
@@ -74,7 +74,7 @@ async function getKategoriData(kategori) {
 	const res = await fetch(
 		`https://server-hesotomotiv.net/api/user/categories/${slug}`,
 		{
-			cache: 'no-store',
+			next: { revalidate: 86400 },
 		}
 	);
 

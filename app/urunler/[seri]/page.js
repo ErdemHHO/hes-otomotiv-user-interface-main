@@ -13,7 +13,7 @@ async function getData(seri) {
 	const res = await fetch(
 		`https://server-hesotomotiv.net/api/user/products/series/${slug}`,
 		{
-			cache: 'no-store',
+			next: { revalidate: 86400 },
 		}
 	);
 
@@ -26,7 +26,7 @@ async function getCarData(seri) {
 	const res = await fetch(
 		`https://server-hesotomotiv.net/api/user/cars/series/${slug}`,
 		{
-			cache: 'no-store',
+			next: { revalidate: 86400 },
 		}
 	);
 
@@ -42,7 +42,7 @@ async function getSeriData(seri) {
 	const res = await fetch(
 		`https://server-hesotomotiv.net/api/user/series/${slug}`,
 		{
-			cache: 'no-store',
+			next: { revalidate: 86400 },
 		}
 	);
 
