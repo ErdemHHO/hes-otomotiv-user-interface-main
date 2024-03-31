@@ -1,8 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import { FaWhatsapp, FaSearch } from 'react-icons/fa';
 import Link from 'next/link';
 
@@ -23,13 +20,9 @@ function ProductCard({ data }) {
 		slug: data.slug,
 	};
 
-	useEffect(() => {
-		AOS.init();
-	}, []);
-
 	return (
 		<div>
-			<div className="product_card" data-aos="fade-up" data-aos-duration="1000">
+			<div className="product_card">
 				<div className="product_card__img p-2">
 					<img src={product.image} alt={product.title} />
 				</div>
