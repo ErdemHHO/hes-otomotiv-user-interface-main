@@ -15,7 +15,7 @@ async function getData(araba, kategori) {
 	const res = await fetch(
 		`https://server-hesotomotiv.net/api/user/products/car/${carSlug}/category/${categorySlug}`,
 		{
-			next: { revalidate: 86400 },
+			cache: 'no-store',
 		}
 	);
 

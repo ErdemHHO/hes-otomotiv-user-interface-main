@@ -9,7 +9,7 @@ export const metadata = {
 
 async function getData() {
 	const res = await fetch('https://server-hesotomotiv.net/api/user/products', {
-		next: { revalidate: 86400 },
+		cache: 'no-store',
 	});
 	if (!res.ok) {
 		throw new Error('Failed to fetch data');

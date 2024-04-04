@@ -13,7 +13,7 @@ async function getData(seri) {
 	const res = await fetch(
 		`https://server-hesotomotiv.net/api/user/products/series/${slug}`,
 		{
-			next: { revalidate: 86400 },
+			cache: 'no-store',
 		}
 	);
 
