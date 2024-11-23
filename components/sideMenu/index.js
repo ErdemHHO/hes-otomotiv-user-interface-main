@@ -7,7 +7,7 @@ function SideMenu({ data, seri, araba, kategori }) {
   return (
     <div className='mt-5 text-center sideMenu'>
       <ul className='sideMenu1' >
-        {categories?.map((item) => {
+        {categories.map((item) => {
           let url = `/urunler/${item.slug}`;
 
           if (seri && !araba && !kategori) {
@@ -36,7 +36,7 @@ function SideMenu({ data, seri, araba, kategori }) {
           KATEGORİ SEÇİNİZ
         </Link>
         <ul className="dropdown-menu">
-        {categories?.map((item) => {
+        {categories.map((item) => {
           let url = `/urunler/${item.slug}`;
 
           if (seri && !araba && !kategori) {
