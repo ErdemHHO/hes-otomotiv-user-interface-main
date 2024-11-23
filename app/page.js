@@ -1,8 +1,8 @@
 import BrandSlider from '@/components/brandSlider';
-import SideMenu from '@/components/sideMenu';
 import HomeBgImg from '@/components/homeBgImg';
 import HomeSearchBar from '@/components/HomeSearchBar';
 import ProductCard from '@/components/productCard';
+import SideMenu from '@/components/sideMenu';
 
 import Link from 'next/link';
 
@@ -13,7 +13,7 @@ export const metadata = {
 };
 
 async function getData() {
-	const res = await fetch('https://server-hesotomotiv.net/api/user/products', {
+	const res = await fetch('https://server.hes-otomotiv.com/api/user/products', {
 		cache: 'no-store',
 	});
 
@@ -25,7 +25,7 @@ async function getData() {
 }
 
 async function getSeriData() {
-	const res = await fetch('https://server-hesotomotiv.net/api/user/series', {
+	const res = await fetch('https://server.hes-otomotiv.com/api/user/series', {
 		next: { revalidate: 86400 },
 	});
 

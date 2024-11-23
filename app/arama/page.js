@@ -1,12 +1,11 @@
 'use client'
 
-import React from 'react';
-import {useSearchParams } from "next/navigation";
-import SideMenu from "@/components/sideMenu";
 import ProductCard from "@/components/productCard";
+import SideMenu from "@/components/sideMenu";
+import { useSearchParams } from "next/navigation";
 
 async function getSearchRequest(query) {
-  const res = await fetch(`https://server-hesotomotiv.net/api/user/product/search/search?q=${query}`, {
+  const res = await fetch(`https://server.hes-otomotiv.com/api/user/product/search/search?q=${query}`, {
     cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
@@ -19,7 +18,7 @@ async function getSearchRequest(query) {
 
 async function getSeriData() {
 
-  const res = await fetch('https://server-hesotomotiv.net/api/user/series',{
+  const res = await fetch('https://server.hes-otomotiv.com/api/user/series',{
     cache: 'no-store'
   })
 

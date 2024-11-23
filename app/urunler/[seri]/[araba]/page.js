@@ -1,8 +1,7 @@
-import React from 'react';
 
-import SideMenu from '@/components/sideMenu';
-import ProductCard from '@/components/productCard';
 import NavigationBar from '@/components/navigationBar';
+import ProductCard from '@/components/productCard';
+import SideMenu from '@/components/sideMenu';
 
 export const metadata = {
 	description: 'Lists all products in a car',
@@ -12,7 +11,7 @@ async function getData(araba) {
 	const slug = araba;
 
 	const res = await fetch(
-		`https://server-hesotomotiv.net/api/user/products/car/${slug}`,
+		`https://server.hes-otomotiv.com/api/user/products/car/${slug}`,
 		{
 			cache: 'no-store',
 		}
@@ -23,7 +22,7 @@ async function getData(araba) {
 
 async function getCategoryData() {
 	const res = await fetch(
-		'https://server-hesotomotiv.net/api/user/categories',
+		'https://server.hes-otomotiv.com/api/user/categories',
 		{
 			next: { revalidate: 86400 },
 		}
@@ -39,7 +38,7 @@ async function getCarData(araba) {
 	const slug = araba;
 
 	const res = await fetch(
-		`https://server-hesotomotiv.net/api/user/cars/${slug}`,
+		`https://server.hes-otomotiv.com/api/user/cars/${slug}`,
 		{
 			next: { revalidate: 86400 },
 		}
@@ -55,7 +54,7 @@ async function getSeriData(seri) {
 	const slug = seri;
 
 	const res = await fetch(
-		`https://server-hesotomotiv.net/api/user/series/${slug}`,
+		`https://server.hes-otomotiv.com/api/user/series/${slug}`,
 		{
 			next: { revalidate: 86400 },
 		}

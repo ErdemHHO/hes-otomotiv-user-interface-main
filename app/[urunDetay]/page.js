@@ -1,13 +1,11 @@
-import React from 'react';
 import ProductDetailImages from '@/components/productDetailImages';
 import ProductDetailInfo from '@/components/productDetailInfo';
 import Head from 'next/head';
-import Metadata from 'next';
 
 async function getProduct(urunDetay) {
 	const productSlug = urunDetay;
 	const res = await fetch(
-		`https://server-hesotomotiv.net/api/user/product/${productSlug}`,
+		`https://server.hes-otomotiv.com/api/user/product/${productSlug}`,
 		{
 			cache: 'no-store',
 		}
