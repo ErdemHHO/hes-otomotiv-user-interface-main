@@ -40,4 +40,5 @@ jobs:
           script: |
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/erdemhho:user-latest
             docker rm -f nextjs-app || true
-            docker run -d --name nextjs-app -p 3000:3000 ${{ secrets.DOCKERHUB_USERNAME }}/erdemhho:user-latest
+            docker run -d --name nextjs-app --network host ${{ secrets.DOCKERHUB_USERNAME }}/erdemhho:user-latest
+
