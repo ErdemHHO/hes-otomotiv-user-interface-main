@@ -15,6 +15,7 @@ const ProductDetailImages = ({ data }) => {
 		original: url,
 		thumbnail: url,
 		originalAlt: data.title,
+		originalTitle:data.title,
 		originalWidth: 800,
 		originalHeight: 600,
 	}));

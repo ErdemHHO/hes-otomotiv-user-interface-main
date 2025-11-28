@@ -24,7 +24,7 @@ function ProductCard({ data }) {
 		<div>
 			<div className="product_card">
 				<div className="product_card__img p-2">
-					<img src={product.image} alt={product.title} />
+					<img src={product.image} alt={product.title} title={product.title} loading="lazy"/>
 				</div>
 				<h6 className="text-center mt-3">
 					<strong>
