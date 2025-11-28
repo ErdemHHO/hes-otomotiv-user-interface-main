@@ -18,6 +18,7 @@ const ProductDetailImages = ({ data }) => {
 		originalTitle:data.title,
 		originalWidth: 800,
 		originalHeight: 600,
+		loading:'lazy'
 	}));
 
 	return (
