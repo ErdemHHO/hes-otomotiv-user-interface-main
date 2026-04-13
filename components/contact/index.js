@@ -116,11 +116,12 @@ function index() {
 			<iframe
 				className="p-5"
 				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.119590958423!2d29.114788375828766!3d41.02263947134845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac95a715f19db%3A0x7b4fbd39a1f28f70!2sHES%20OTOMOT%C4%B0V%20-%20BMW%20M%C4%B0N%C4%B0%20OTO%20YEDEK%20PAR%C3%87ALARI!5e0!3m2!1str!2str!4v1689276296091!5m2!1str!2str"
+				title="HES OTOMOTİV Konum - Google Harita"
 				width="100%"
 				height="450"
 				allowFullScreen=""
 				loading="lazy"
-				referrerpolicy="no-referrer-when-downgrade"
+				referrerPolicy="no-referrer-when-downgrade"
 			></iframe>
 		</div>
 	);

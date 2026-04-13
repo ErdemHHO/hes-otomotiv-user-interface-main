@@ -12,6 +12,11 @@ const nextConfig = {
 				hostname: 'hes-otomotiv.com',
 				pathname: '/**',
 			},
+			{
+				protocol: 'https',
+				hostname: '*.amazonaws.com',
+				pathname: '/**',
+			},
 		],
 	},
 };

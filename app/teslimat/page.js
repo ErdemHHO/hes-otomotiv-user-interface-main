@@ -47,7 +47,7 @@ function page() {
 				ilkesini benimseyerek, teslimat sürecinde herhangi bir sorun yaşanması
 				durumunda sizlere destek sağlamak için buradayız.
 			</p>
-			<h1 className="baslik-h1 "> İade & Değişim </h1>
+			<h2 className="baslik-h1"> İade & Değişim </h2>
 			<ol className="text-start">
 				<li>
 					Elektronik ürünler işlem gördükten sonra iadesi kabul edilmemektedir.

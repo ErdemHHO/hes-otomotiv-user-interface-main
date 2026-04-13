@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import ProductDetailImages from '@/components/productDetailImages';
 import ProductDetailInfo from '@/components/productDetailInfo';
 import { buildMetadata, buildProductJsonLd } from '@/lib/seo';
@@ -63,12 +64,13 @@ async function Page({ params: { urunDetay } }) {
 						<div className="row">
 							{product.image_urls.map((image, index) => (
 								<div className="col-6 col-md-4 col-lg-3" key={index}>
-									<img
+									<Image
 										src={image}
 										alt={`${product.title} - Görsel ${index + 1}`}
 										className="img-fluid imagesOpacity"
-										width={100}
-										height={100}
+										width={400}
+										height={400}
+										style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
 									/>
 								</div>
 							))}

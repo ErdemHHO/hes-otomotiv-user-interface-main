@@ -34,7 +34,7 @@ function page() {
 				buradayız.
 			</p>
 
-			<h1 className="baslik-h1"> Vizyon & Misyon </h1>
+			<h2 className="baslik-h1"> Vizyon & Misyon </h2>
 			<hr />
 			<p>
 				<strong>Vizyonumuz ; </strong>

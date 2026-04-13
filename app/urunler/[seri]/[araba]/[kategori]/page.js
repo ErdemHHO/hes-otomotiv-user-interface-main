@@ -1,7 +1,7 @@
-
 import NavigationBar from '@/components/navigationBar';
 import ProductCard from '@/components/productCard';
 import SideMenu from '@/components/sideMenu';
+import Pagination from '@/components/pagination';
 import { buildMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params: { araba, kategori, seri } }) {
@@ -30,15 +30,10 @@ export async function generateMetadata({ params: { araba, kategori, seri } }) {
 	});
 }
 
-async function getData(araba, kategori) {
-	const carSlug = araba;
-	const categorySlug = kategori;
-
+async function getData(araba, kategori, page, limit) {
 	const res = await fetch(
-		`https://server.hes-otomotiv.com/api/user/products/car/${carSlug}/category/${categorySlug}`,
-		{
-			cache: 'no-store',
-		}
+		`https://server.hes-otomotiv.com/api/user/products/car/${araba}/category/${kategori}?page=${page}&limit=${limit}`,
+		{ cache: 'no-store' }
 	);
 
 	return res.json();
@@ -47,9 +42,7 @@ async function getData(araba, kategori) {
 async function getCategoryData() {
 	const res = await fetch(
 		'https://server.hes-otomotiv.com/api/user/categories',
-		{
-			next: { revalidate: 86400 },
-		}
+		{ next: { revalidate: 86400 } }
 	);
 
 	if (!res.ok) {
@@ -59,13 +52,9 @@ async function getCategoryData() {
 }
 
 async function getCarData(araba) {
-	const slug = araba;
-
 	const res = await fetch(
-		`https://server.hes-otomotiv.com/api/user/cars/${slug}`,
-		{
-			next: { revalidate: 86400 },
-		}
+		`https://server.hes-otomotiv.com/api/user/cars/${araba}`,
+		{ next: { revalidate: 86400 } }
 	);
 
 	if (!res.ok) {
@@ -75,13 +64,9 @@ async function getCarData(araba) {
 }
 
 async function getSeriData(seri) {
-	const slug = seri;
-
 	const res = await fetch(
-		`https://server.hes-otomotiv.com/api/user/series/${slug}`,
-		{
-			next: { revalidate: 86400 },
-		}
+		`https://server.hes-otomotiv.com/api/user/series/${seri}`,
+		{ next: { revalidate: 86400 } }
 	);
 
 	if (!res.ok) {
@@ -91,13 +76,9 @@ async function getSeriData(seri) {
 }
 
 async function getKategoriData(kategori) {
-	const slug = kategori;
-
 	const res = await fetch(
-		`https://server.hes-otomotiv.com/api/user/categories/${slug}`,
-		{
-			next: { revalidate: 86400 },
-		}
+		`https://server.hes-otomotiv.com/api/user/categories/${kategori}`,
+		{ next: { revalidate: 86400 } }
 	);
 
 	if (!res.ok) {
@@ -106,16 +87,20 @@ async function getKategoriData(kategori) {
 	return res.json();
 }
 
-async function page({
-	params: { araba },
-	params: { kategori },
-	params: { seri },
-}) {
-	const data = await getData(araba, kategori);
-	const categoryData = await getCategoryData();
-	const carData = await getCarData(araba);
-	const seriData = await getSeriData(seri);
-	const categoryData2 = await getKategoriData(kategori);
+async function page({ params: { araba, kategori, seri }, searchParams }) {
+	const currentPage = Math.max(1, parseInt(searchParams?.page) || 1);
+	const limit = Math.min(100, Math.max(1, parseInt(searchParams?.limit) || 48));
+
+	const [data, categoryData, carData, seriData, categoryData2] = await Promise.all([
+		getData(araba, kategori, currentPage, limit),
+		getCategoryData(),
+		getCarData(araba),
+		getSeriData(seri),
+		getKategoriData(kategori),
+	]);
+
+	const totalPages = data?.pagination?.totalPages ?? 1;
+	const total = data?.pagination?.total ?? data?.products?.length ?? 0;
 
 	return (
 		<div className="icerik">
@@ -142,6 +127,12 @@ async function page({
 										<ProductCard key={product._id} data={product} />
 									))}
 								</div>
+								<Pagination
+									currentPage={currentPage}
+									totalPages={totalPages}
+									total={total}
+									limit={limit}
+								/>
 							</div>
 						</div>
 					</div>

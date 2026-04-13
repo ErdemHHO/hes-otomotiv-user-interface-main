@@ -1,7 +1,7 @@
 import NavigationBar from '@/components/navigationBar';
 import ProductCard from '@/components/productCard';
 import SideMenu from '@/components/sideMenu';
-
+import Pagination from '@/components/pagination';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
@@ -18,10 +18,11 @@ export const metadata = buildMetadata({
 	path: '/urunler',
 });
 
-async function getData() {
-	const res = await fetch('https://server.hes-otomotiv.com/api/user/products', {
-		cache: 'no-store',
-	});
+async function getData(page, limit) {
+	const res = await fetch(
+		`https://server.hes-otomotiv.com/api/user/products?page=${page}&limit=${limit}`,
+		{ cache: 'no-store' }
+	);
 	if (!res.ok) {
 		throw new Error('Failed to fetch data');
 	}
@@ -39,9 +40,17 @@ async function getSeriData() {
 	return res.json();
 }
 
-async function page() {
-	const data = await getData();
-	const seriData = await getSeriData();
+async function page({ searchParams }) {
+	const currentPage = Math.max(1, parseInt(searchParams?.page) || 1);
+	const limit = Math.min(100, Math.max(1, parseInt(searchParams?.limit) || 48));
+
+	const [data, seriData] = await Promise.all([
+		getData(currentPage, limit),
+		getSeriData(),
+	]);
+
+	const totalPages = data?.pagination?.totalPages ?? 1;
+	const total = data?.pagination?.total ?? data?.products?.length ?? 0;
 
 	return (
 		<div className="icerik">
@@ -58,6 +67,12 @@ async function page() {
 									<ProductCard key={product._id} data={product} />
 								))}
 							</div>
+							<Pagination
+								currentPage={currentPage}
+								totalPages={totalPages}
+								total={total}
+								limit={limit}
+							/>
 						</div>
 					</div>
 				</div>

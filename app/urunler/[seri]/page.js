@@ -1,7 +1,7 @@
-
 import NavigationBar from '@/components/navigationBar';
 import ProductCard from '@/components/productCard';
 import SideMenu from '@/components/sideMenu';
+import Pagination from '@/components/pagination';
 import { buildMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params: { seri } }) {
@@ -22,26 +22,19 @@ export async function generateMetadata({ params: { seri } }) {
 	});
 }
 
-async function getData(seri) {
-	const slug = seri;
+async function getData(seri, page, limit) {
 	const res = await fetch(
-		`https://server.hes-otomotiv.com/api/user/products/series/${slug}`,
-		{
-			cache: 'no-store',
-		}
+		`https://server.hes-otomotiv.com/api/user/products/series/${seri}?page=${page}&limit=${limit}`,
+		{ cache: 'no-store' }
 	);
 
 	return res.json();
 }
 
 async function getCarData(seri) {
-	const slug = seri;
-
 	const res = await fetch(
-		`https://server.hes-otomotiv.com/api/user/cars/series/${slug}`,
-		{
-			next: { revalidate: 86400 },
-		}
+		`https://server.hes-otomotiv.com/api/user/cars/series/${seri}`,
+		{ next: { revalidate: 86400 } }
 	);
 
 	if (!res.ok) {
@@ -51,13 +44,9 @@ async function getCarData(seri) {
 }
 
 async function getSeriData(seri) {
-	const slug = seri;
-
 	const res = await fetch(
-		`https://server.hes-otomotiv.com/api/user/series/${slug}`,
-		{
-			next: { revalidate: 86400 },
-		}
+		`https://server.hes-otomotiv.com/api/user/series/${seri}`,
+		{ next: { revalidate: 86400 } }
 	);
 
 	if (!res.ok) {
@@ -66,10 +55,18 @@ async function getSeriData(seri) {
 	return res.json();
 }
 
-async function page({ params: { seri } }) {
-	const data = await getData(seri);
-	const carData = await getCarData(seri);
-	const seriData = await getSeriData(seri);
+async function page({ params: { seri }, searchParams }) {
+	const currentPage = Math.max(1, parseInt(searchParams?.page) || 1);
+	const limit = Math.min(100, Math.max(1, parseInt(searchParams?.limit) || 48));
+
+	const [data, carData, seriData] = await Promise.all([
+		getData(seri, currentPage, limit),
+		getCarData(seri),
+		getSeriData(seri),
+	]);
+
+	const totalPages = data?.pagination?.totalPages ?? 1;
+	const total = data?.pagination?.total ?? data?.products?.length ?? 0;
 
 	return (
 		<div className="icerik">
@@ -87,6 +84,12 @@ async function page({ params: { seri } }) {
 										<ProductCard key={product._id} data={product} />
 									))}
 								</div>
+								<Pagination
+									currentPage={currentPage}
+									totalPages={totalPages}
+									total={total}
+									limit={limit}
+								/>
 							</div>
 						</div>
 					</div>
