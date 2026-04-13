@@ -4,7 +4,7 @@ import SideMenu from '@/components/sideMenu';
 import Pagination from '@/components/pagination';
 import { buildMetadata } from '@/lib/seo';
 
-export async function generateMetadata({ params: { seri } }) {
+export async function generateMetadata({ params: { seri }, searchParams }) {
 	const seriData = await getSeriData(seri);
 	const seriName = seriData?.series?.name ?? seri;
 
@@ -18,7 +18,7 @@ export async function generateMetadata({ params: { seri } }) {
 			'BMW yedek parça',
 			'HES Otomotiv',
 		],
-		path: `/urunler/${seri}`,
+		path: (parseInt(searchParams?.page) || 1) > 1 ? `/urunler/${seri}?page=${parseInt(searchParams.page)}` : `/urunler/${seri}`,
 	});
 }
 

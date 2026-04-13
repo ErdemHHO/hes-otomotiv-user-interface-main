@@ -25,7 +25,7 @@ export const metadata = buildMetadata({
 
 async function getData() {
 	const res = await fetch('https://server.hes-otomotiv.com/api/user/products', {
-		cache: 'no-store',
+		next: { revalidate: 3600 },
 	});
 
 	if (!res.ok) {

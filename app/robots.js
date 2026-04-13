@@ -9,7 +9,7 @@ export default function robots() {
 				disallow: ['/api/', '/_next/'],
 			},
 		],
-		sitemap: `${SITE_URL}/sitemap.xml`,
+		sitemap: [`${SITE_URL}/sitemap.xml`, `${SITE_URL}/sitemap-images.xml`],
 		host: SITE_URL,
 	};
 }

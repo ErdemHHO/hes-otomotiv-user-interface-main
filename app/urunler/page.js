@@ -4,19 +4,22 @@ import SideMenu from '@/components/sideMenu';
 import Pagination from '@/components/pagination';
 import { buildMetadata } from '@/lib/seo';
 
-export const metadata = buildMetadata({
-	title: 'Tüm Ürünler | BMW ve MINI Yedek Parça',
-	description:
-		'BMW ve MINI modellerine özel tüm yedek parçalarımızı inceleyin. Bosch, Mahle, Valeo, LUK, Febi ve daha fazlası. HES OTOMOTİV güvencesiyle.',
-	keywords: [
-		'BMW yedek parça',
-		'MINI yedek parça',
-		'tüm BMW parçaları',
-		'otomotiv yedek parça',
-		'HES Otomotiv ürünler',
-	],
-	path: '/urunler',
-});
+export async function generateMetadata({ searchParams }) {
+	const page = parseInt(searchParams?.page) || 1;
+	return buildMetadata({
+		title: 'Tüm Ürünler | BMW ve MINI Yedek Parça',
+		description:
+			'BMW ve MINI modellerine özel tüm yedek parçalarımızı inceleyin. Bosch, Mahle, Valeo, LUK, Febi ve daha fazlası. HES OTOMOTİV güvencesiyle.',
+		keywords: [
+			'BMW yedek parça',
+			'MINI yedek parça',
+			'tüm BMW parçaları',
+			'otomotiv yedek parça',
+			'HES Otomotiv ürünler',
+		],
+		path: page > 1 ? `/urunler?page=${page}` : '/urunler',
+	});
+}
 
 async function getData(page, limit) {
 	const res = await fetch(
