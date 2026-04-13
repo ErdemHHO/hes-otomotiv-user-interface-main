@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 function NotFound() {
   return (
@@ -9,6 +10,9 @@ function NotFound() {
         </div>
         <div className='d-flex justify-content-center text-center' >
             <h2 className='fw-1'>SAYFA BULUNAMADI</h2>
+        </div>
+        <div className='d-flex justify-content-center text-center mt-3'>
+            <Link href="/" className='btn btn-primary'>Anasayfaya Dön</Link>
         </div>
     </div>
   )
