@@ -24,9 +24,9 @@ function SideMenu({ data, seri, araba, kategori }) {
           }
 
           return (
-            <Link href={url} key={item._id}>
-              <li className='list-group-item menuButton'>{item.name}</li>
-            </Link>
+            <li key={item._id} className='list-group-item menuButton'>
+              <Link href={url}>{item.name}</Link>
+            </li>
           );
         })}
       </ul>
@@ -53,9 +53,9 @@ function SideMenu({ data, seri, araba, kategori }) {
           }
 
           return (
-            <Link href={url} key={item._id}>
-              <li className='dropdown-item'>{item.name}</li>
-            </Link>
+            <li key={item._id} className='dropdown-item'>
+              <Link href={url}>{item.name}</Link>
+            </li>
           );
         })}
       </ul>

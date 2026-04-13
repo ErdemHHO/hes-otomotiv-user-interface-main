@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { FaWhatsapp, FaSearch } from 'react-icons/fa';
 import Link from 'next/link';
 
-function ProductCard({ data }) {
+function ProductCard({ data, priority = false }) {
 	const product = {
 		name: data.name,
 		title: data.title,
@@ -33,13 +33,14 @@ function ProductCard({ data }) {
 						title={product.title}
 						width={300}
 						height={300}
-						loading="lazy"
+						loading={priority ? 'eager' : 'lazy'}
+						priority={priority}
 						style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
 					/>
 				</div>
-				<h6 className="text-center mt-3">
+				<h3 className="text-center mt-3 h6">
 					<strong>{displayName}</strong>
-				</h6>
+				</h3>
 				<div className="product_card__info p-3">
 					<ul>
 						<li>

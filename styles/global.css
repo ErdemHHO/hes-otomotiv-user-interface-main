@@ -60,9 +60,19 @@ a{
   border-bottom: 2px solid rgba(128, 127, 127, 0.166);
 }
 
+.menuButton a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+}
+
 .menuButton:hover{
   background-color: #04558C !important;
   color: #fff !important;
+}
+
+.menuButton:hover a {
+  color: #fff;
 }
 
 
@@ -160,7 +170,7 @@ a{
   color: rgb(22, 22, 22);
 }
 .product_card__button_whatsapp {
-	background-color: #1b925a;
+	background-color: #156e43;
   border-radius: 4px;
   padding: 5px;
   color: #fff;
@@ -173,7 +183,7 @@ a{
 	background-color: #c29a22;
 }
 .product_card__button_whatsapp:hover {
-	background-color: #167d4d;
+	background-color: #0f5232;
 }
 
 /**********************************/

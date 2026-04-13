@@ -71,8 +71,8 @@ export default async function Home() {
 				<strong>YENİ ÜRÜNLER</strong>
 			</h1>
 			<div className="product_card_container">
-				{data?.products?.map((product) => (
-					<ProductCard key={product._id} data={product} />
+				{data?.products?.map((product, index) => (
+					<ProductCard key={product._id} data={product} priority={index === 0} />
 				))}
 			</div>
 			<div className="text-end text-denger mt-1 mx-5 p-3">
