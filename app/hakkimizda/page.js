@@ -1,8 +1,19 @@
 import React from 'react';
 
-export const metadata = {
-	description: 'Explains our vision and mission',
-};
+import { buildMetadata } from '@/lib/seo';
+
+export const metadata = buildMetadata({
+	title: 'Hakkımızda | HES OTOMOTİV',
+	description:
+		"2001 yılından beri BMW ve MINI yedek parça sektöründe hizmet veren HES OTOMOTİV hakkında bilgi edinin. İstanbul Ümraniye'de 20 yılı aşkın tecrübe.",
+	keywords: [
+		'HES Otomotiv hakkında',
+		'BMW yedek parça İstanbul',
+		'Ümraniye otomotiv',
+		'BMW MINI parça mağazası',
+	],
+	path: '/hakkimizda',
+});
 
 function page() {
 	return (

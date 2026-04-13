@@ -1,59 +1,71 @@
 import ProductDetailImages from '@/components/productDetailImages';
 import ProductDetailInfo from '@/components/productDetailInfo';
-import Head from 'next/head';
+import { buildMetadata, buildProductJsonLd } from '@/lib/seo';
 
 async function getProduct(urunDetay) {
-	const productSlug = urunDetay;
 	const res = await fetch(
-		`https://server.hes-otomotiv.com/api/user/product/${productSlug}`,
-		{
-			cache: 'no-store',
-		}
+		`https://server.hes-otomotiv.com/api/user/product/${urunDetay}`,
+		{ cache: 'no-store' }
 	);
 	return res.json();
 }
 
 export async function generateMetadata({ params: { urunDetay } }) {
 	const data = await getProduct(urunDetay);
+	const product = data?.product;
 
-	return {
-		description: data?.product?.title,
-		title: data?.product?.title,
-		openGraph: {
-			images: [...data?.product?.image_urls[0]],
-		},
-	};
+	if (!product) return { title: 'Ürün Bulunamadı' };
+
+	return buildMetadata({
+		title: `${product.title} | ${product.brand_id?.name ?? ''} BMW MINI Yedek Parça`,
+		description: `${product.title} - OEM No: ${product.oemNumber} - Marka: ${product.brand_id?.name ?? ''}. BMW ve MINI için orijinal yedek parça. Stok Kodu: ${product.stockCode}`,
+		keywords: [
+			product.title,
+			product.oemNumber,
+			product.brand_id?.name,
+			'BMW yedek parça',
+			'MINI yedek parça',
+			'orijinal yedek parça',
+			product.stockCode,
+		].filter(Boolean),
+		path: `/${urunDetay}`,
+		image: product.image_urls?.[0],
+	});
 }
 
 async function Page({ params: { urunDetay } }) {
 	const data = await getProduct(urunDetay);
+	const product = data?.product;
 
 	return (
 		<>
-			<Head>
-				<title>{data?.product?.title}</title>
-				<link rel="icon" type="image/png" href={data?.product?.image_urls[0]} />
-			</Head>
+			{product && (
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify(buildProductJsonLd(product, urunDetay)),
+					}}
+				/>
+			)}
 			<main className="icerik">
 				<div className="container">
 					<div className="row">
 						<div className="col-xl-6">
-							<ProductDetailImages data={data?.product} />
+							<ProductDetailImages data={product} />
 						</div>
 						<div className="col-xl-6">
-							<ProductDetailInfo data={data.product} />
+							<ProductDetailInfo data={product} />
 						</div>
 					</div>
 				</div>
-				{data?.product?.image_urls && (
-					//ürün fotoğrafları
+				{product?.image_urls && (
 					<div className="container">
 						<div className="row">
-							{data?.product?.image_urls.map((image, index) => (
+							{product.image_urls.map((image, index) => (
 								<div className="col-6 col-md-4 col-lg-3" key={index}>
 									<img
 										src={image}
-										alt={data?.product?.title}
+										alt={`${product.title} - Görsel ${index + 1}`}
 										className="img-fluid imagesOpacity"
 										width={100}
 										height={100}

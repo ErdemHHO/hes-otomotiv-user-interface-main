@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { FaWhatsapp, FaSearch } from 'react-icons/fa';
 import Link from 'next/link';
 
@@ -13,25 +14,30 @@ function ProductCard({ data }) {
 		status: data.status,
 		oldPrice: data.oldPrice,
 		sellingPrice: data.sellingPrice,
-		category_id: data.category_id,
-		series_id: data.series_id,
-		car_id: data.car_id,
 		image: data.image_urls[0],
 		slug: data.slug,
 	};
+
+	const displayName =
+		product.name.length > 30
+			? product.name.substring(0, 30) + '...'
+			: product.name;
 
 	return (
 		<div>
 			<div className="product_card">
 				<div className="product_card__img p-2">
-					<img src={product.image} alt={product.title} title={product.title} loading="lazy"/>
+					<Image
+						src={product.image}
+						alt={product.title}
+						title={product.title}
+						width={300}
+						height={300}
+						style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+					/>
 				</div>
 				<h6 className="text-center mt-3">
-					<strong>
-						{product.name.length > 30
-							? product.name.substring(0, 30) + '...'
-							: product.name}
-					</strong>
+					<strong>{displayName}</strong>
 				</h6>
 				<div className="product_card__info p-3">
 					<ul>
@@ -56,14 +62,11 @@ function ProductCard({ data }) {
 				<div className="product_card__price">
 					<span className="price">
 						<del className="text-secondary"> {product.oldPrice} ₺</del>
-						<span className="text-success price">
-							{' '}
-							{product.sellingPrice} ₺
-						</span>
+						<span className="text-success price"> {product.sellingPrice} ₺</span>
 					</span>
 				</div>
 
-				<div className="product_card__button d-flex justify-content-around ">
+				<div className="product_card__button d-flex justify-content-around">
 					<Link
 						href={`https://api.whatsapp.com/send/?phone=%2B905322409058&text=Merhaba%21++${product.stockCode}+stok+kodlu+%C3%BCr%C3%BCn%C3%BCn%C3%BCz+hakk%C4%B1nda+bilgi+almak+istiyorum.&type=phone_number&app_absent=0`}
 						target="_blank"

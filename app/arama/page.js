@@ -48,7 +48,6 @@ function Page() {
         ]);
 
         setSeriData(seriResponse);
-        console.log(seriResponse,"seriResponse:::")
         setProductData(productResponse);
       } catch (error) {
         console.error("Error fetching data:", error);

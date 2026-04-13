@@ -2,10 +2,33 @@
 import NavigationBar from '@/components/navigationBar';
 import ProductCard from '@/components/productCard';
 import SideMenu from '@/components/sideMenu';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata = {
-	description: 'Lists all products in a category',
-};
+export async function generateMetadata({ params: { araba, kategori, seri } }) {
+	const [carData, seriData, categoryData2] = await Promise.all([
+		getCarData(araba),
+		getSeriData(seri),
+		getKategoriData(kategori),
+	]);
+
+	const carName = carData?.car?.name ?? araba;
+	const seriName = seriData?.series?.name ?? seri;
+	const kategoriName = categoryData2?.category?.name ?? kategori;
+
+	return buildMetadata({
+		title: `${seriName} ${carName} ${kategoriName} | BMW MINI Yedek Parça`,
+		description: `${seriName} ${carName} için ${kategoriName} kategorisinde orijinal ve uygun fiyatlı yedek parçalar. HES OTOMOTİV'de stokta hazır.`,
+		keywords: [
+			`${carName} ${kategoriName}`,
+			`${seriName} ${carName} ${kategoriName}`,
+			`BMW ${carName} ${kategoriName}`,
+			`${kategoriName} yedek parça`,
+			'BMW yedek parça',
+			'HES Otomotiv',
+		],
+		path: `/urunler/${seri}/${araba}/${kategori}`,
+	});
+}
 
 async function getData(araba, kategori) {
 	const carSlug = araba;

@@ -2,10 +2,25 @@
 import NavigationBar from '@/components/navigationBar';
 import ProductCard from '@/components/productCard';
 import SideMenu from '@/components/sideMenu';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata = {
-	description: 'Lists all products in a series',
-};
+export async function generateMetadata({ params: { seri } }) {
+	const seriData = await getSeriData(seri);
+	const seriName = seriData?.series?.name ?? seri;
+
+	return buildMetadata({
+		title: `${seriName} Yedek Parça | BMW MINI Orijinal Parçalar`,
+		description: `${seriName} için orijinal ve yüksek kaliteli yedek parçalar. BMW ve MINI ${seriName} modellerine özel stok parçalar HES OTOMOTİV'de.`,
+		keywords: [
+			`${seriName} yedek parça`,
+			`BMW ${seriName} yedek parça`,
+			`${seriName} orijinal parça`,
+			'BMW yedek parça',
+			'HES Otomotiv',
+		],
+		path: `/urunler/${seri}`,
+	});
+}
 
 async function getData(seri) {
 	const slug = seri;

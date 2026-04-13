@@ -6,11 +6,22 @@ import SideMenu from '@/components/sideMenu';
 
 import Link from 'next/link';
 
-export const metadata = {
+import { buildMetadata } from '@/lib/seo';
+
+export const metadata = buildMetadata({
 	title: 'HES OTOMOTİV | BMW ve MINI Otomotiv Yedek Parçaları',
 	description:
-		'BMW ve MINI otomobilleriniz için orijinal ve yüksek kaliteli yedek parçalar ve aksesuarlar. Geniş ürün yelpazemizle sizlere hizmet veriyoruz',
-};
+		"BMW ve MINI otomobilleriniz için orijinal ve yüksek kaliteli yedek parçalar ve aksesuarlar. İstanbul Ümraniye'de 20 yılı aşkın tecrübesiyle hizmet veriyoruz.",
+	keywords: [
+		'BMW yedek parça',
+		'MINI yedek parça',
+		'BMW orijinal parça',
+		'otomotiv yedek parça',
+		'HES Otomotiv',
+		'Ümraniye BMW parça',
+	],
+	path: '/',
+});
 
 async function getData() {
 	const res = await fetch('https://server.hes-otomotiv.com/api/user/products', {

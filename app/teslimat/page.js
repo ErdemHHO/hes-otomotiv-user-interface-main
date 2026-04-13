@@ -1,8 +1,17 @@
 import React from 'react';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata = {
-	description: 'Contains information on delivery and return conditions.',
-};
+export const metadata = buildMetadata({
+	title: 'Teslimat ve İade Koşulları | HES OTOMOTİV',
+	description:
+		'HES OTOMOTİV teslimat ve iade koşulları. Aynı gün kargo, güvenli paketleme ve kolay iade süreci hakkında bilgi alın.',
+	keywords: [
+		'HES Otomotiv teslimat',
+		'yedek parça kargo',
+		'BMW parça iade koşulları',
+	],
+	path: '/teslimat',
+});
 
 function page() {
 	return (
