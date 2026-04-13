@@ -18,7 +18,7 @@ export async function generateMetadata({ params: { urunDetay } }) {
 	if (!product) return { title: 'Ürün Bulunamadı' };
 
 	return buildMetadata({
-		title: `${product.title} | ${product.brand_id?.name ?? ''} BMW MINI Yedek Parça`,
+		title: product.title,
 		description: `${product.title} - OEM No: ${product.oemNumber} - Marka: ${product.brand_id?.name ?? ''}. BMW ve MINI için orijinal yedek parça. Stok Kodu: ${product.stockCode}`,
 		keywords: [
 			product.title,
