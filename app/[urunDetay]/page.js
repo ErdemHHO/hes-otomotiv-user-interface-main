@@ -70,6 +70,7 @@ async function Page({ params: { urunDetay } }) {
 										className="img-fluid imagesOpacity"
 										width={400}
 										height={400}
+										loading="lazy"
 										style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
 									/>
 								</div>

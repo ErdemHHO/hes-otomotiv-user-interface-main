@@ -48,64 +48,64 @@ export default class AutoPlay extends Component {
           <div className="container p-5 d-block text-center justify-content-center">
           <Slider {...settings} className={stylesSlick} >
             <div className={`${styles.brandSlider} m-1`} >
-            <img src="/images/brands/bmw.png" alt="Logo" className={styles.sliderImage}/>
+            <img src="/images/brands/bmw.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div  className={`${styles.brandSlider} m-1`} >
-            <img src="/images/brands/mini.png" alt="Logo" className={styles.sliderImage}/>
+            <img src="/images/brands/mini.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div  className={`${styles.brandSlider} m-1`} >
-            <img src="/images/brands/hes-otomotiv-Behr-Hella-Logo.png" alt="Logo" className={styles.sliderImage}/>
+            <img src="/images/brands/hes-otomotiv-Behr-Hella-Logo.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div  className={`${styles.brandSlider} m-1`} >
-            <img src="/images/brands/hes-otomotiv-wender.png" alt="Logo" className={styles.sliderImage}/>
+            <img src="/images/brands/hes-otomotiv-wender.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`} >
-            <img src="/images/brands/hes-otomotiv-luk.png" alt="Logo" className={styles.sliderImage}/>
+            <img src="/images/brands/hes-otomotiv-luk.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-valeo.png" alt="Logo" className={styles.sliderImage}/>
+            <img src="/images/brands/hes-otomotiv-valeo.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-hella.png" alt="Logo" className={styles.sliderImage}/>
+            <img src="/images/brands/hes-otomotiv-hella.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div  className={`${styles.brandSlider} m-1`} >
-            <img src="/images/brands/hes-otomotiv-ina.png" alt="Logo" className={styles.sliderImage}/>
+            <img src="/images/brands/hes-otomotiv-ina.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`} >
-            <img src="/images/brands/hes-otomotiv-textar.png" alt="Logo" className={styles.sliderImage} />
+            <img src="/images/brands/hes-otomotiv-textar.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-nissens.png" alt="Logo" className={styles.sliderImage} />
+            <img src="/images/brands/hes-otomotiv-nissens.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-manfilter.jpeg" alt="Logo" className={styles.sliderImage} />
+            <img src="/images/brands/hes-otomotiv-manfilter.jpeg" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-lemforder.png" alt="Logo" className={styles.sliderImage} />
+            <img src="/images/brands/hes-otomotiv-lemforder.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-boge.png" alt="Logo" className={styles.sliderImage} />
+            <img src="/images/brands/hes-otomotiv-boge.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-glyco.png" alt="Logo" className={styles.sliderImage} />
+            <img src="/images/brands/hes-otomotiv-glyco.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-mahle.png" alt="Logo" className={styles.sliderImage} />
+            <img src="/images/brands/hes-otomotiv-mahle.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-gates.png" alt="Logo" className={styles.sliderImage} />
+            <img src="/images/brands/hes-otomotiv-gates.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-goetze.png" alt="Logo" className={styles.sliderImage} />
+            <img src="/images/brands/hes-otomotiv-goetze.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-delphi.png" alt="Logo" className={styles.sliderImage} />
+            <img src="/images/brands/hes-otomotiv-delphi.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-cortego.png" alt="Logo" className={styles.sliderImage} />
+            <img src="/images/brands/hes-otomotiv-cortego.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
             <div className={`${styles.brandSlider} m-1`}>
-            <img src="/images/brands/hes-otomotiv-swf.png" alt="Logo" className={styles.sliderImage} />
+            <img src="/images/brands/hes-otomotiv-swf.png" alt="Logo" className={styles.sliderImage} loading="lazy"/>
             </div>
           </Slider>
           </div>

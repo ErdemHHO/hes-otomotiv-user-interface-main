@@ -33,6 +33,7 @@ function ProductCard({ data }) {
 						title={product.title}
 						width={300}
 						height={300}
+						loading="lazy"
 						style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
 					/>
 				</div>
