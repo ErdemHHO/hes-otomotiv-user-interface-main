@@ -80,15 +80,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="tr">
-			<head>
+			<body>
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{
 						__html: JSON.stringify(buildOrganizationJsonLd()),
 					}}
 				/>
-			</head>
-			<body>
 				<Header />
 				<Navbar />
 				<ScrollButton />
