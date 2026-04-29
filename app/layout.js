@@ -2,6 +2,7 @@ import '@/styles/reset.css';
 import '@/styles/variables.css';
 import '@/styles/global.css';
 
+import Script from 'next/script';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
@@ -80,6 +81,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="tr">
+			<head>
+				<Script
+					src="https://www.googletagmanager.com/gtag/js?id=AW-17910373522"
+					strategy="afterInteractive"
+				/>
+				<Script id="google-ads" strategy="afterInteractive">
+					{`
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+						gtag('config', 'AW-17910373522');
+					`}
+				</Script>
+			</head>
 			<body>
 				<script
 					type="application/ld+json"
