@@ -1,5 +1,6 @@
 
 import { FaWhatsapp, FaFacebookF, FaInstagram } from 'react-icons/fa';
+import WhatsAppLink from '@/components/WhatsAppLink';
 import { SiSahibinden } from 'react-icons/si';
 
 import styles from "./styles.module.css";
@@ -20,18 +21,18 @@ function Footer() {
                 <h3 className={`${styles.baslik1} h4`}><strong>HES OTOMOTİV</strong></h3>
                 <h4 className={`${styles.baslik2} h5`}><strong>BMW MINI COOPER YEDEK PARÇALARI</strong> </h4>
                 <div className={styles.textPrimary}>
-                  <Link href="https://api.whatsapp.com/send/?phone=%2B905322409058&text=Merhaba%21++%C3%9Cr%C3%BCnleriniz+hakk%C4%B1nda+bilgi+almak+istiyorum.&type=phone_number&app_absent=0" target="_blank" aria-label="WhatsApp ile iletişim">
+                  <WhatsAppLink href="https://api.whatsapp.com/send/?phone=%2B905322409058&text=Merhaba%21++%C3%9Cr%C3%BCnleriniz+hakk%C4%B1nda+bilgi+almak+istiyorum.&type=phone_number&app_absent=0" target="_blank" aria-label="WhatsApp ile iletişim">
                     <FaWhatsapp size={32} className={`${styles.icon} ${styles.whatsapp}`} /> {'   '}
-                  </Link>
+                  </WhatsAppLink>
                   <Link href="https://www.facebook.com/hesotomotiv34/" target="_blank" aria-label="Facebook sayfamız">
                     <FaFacebookF size={32} className={`${styles.icon} ${styles.facebook}`} /> {'   '}
                   </Link>
                   <Link href="https://www.instagram.com/hesotomotiv34/" target="_blank" aria-label="Instagram sayfamız">
                     <FaInstagram size={32} className={`${styles.icon} ${styles.instagram}`} /> {'   '}
                   </Link>
-                  <Link href="https://api.whatsapp.com/send/?phone=%2B905322409058&text=Merhaba%21++%C3%9Cr%C3%BCnleriniz+hakk%C4%B1nda+bilgi+almak+istiyorum.&type=phone_number&app_absent=0" target="_blank" aria-label="Sahibinden iletişim">
+                  <WhatsAppLink href="https://api.whatsapp.com/send/?phone=%2B905322409058&text=Merhaba%21++%C3%9Cr%C3%BCnleriniz+hakk%C4%B1nda+bilgi+almak+istiyorum.&type=phone_number&app_absent=0" target="_blank" aria-label="Sahibinden iletişim">
                     <SiSahibinden size={32} className={`${styles.icon} ${styles.sahibinden}`} />
-                  </Link> 
+                  </WhatsAppLink> 
                 </div>
               </div>
             </div>

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { FaWhatsapp, FaSearch } from 'react-icons/fa';
+import WhatsAppLink from '@/components/WhatsAppLink';
 import Link from 'next/link';
 
 function ProductCard({ data, priority = false }) {
@@ -69,14 +70,14 @@ function ProductCard({ data, priority = false }) {
 				</div>
 
 				<div className="product_card__button d-flex justify-content-around">
-					<Link
+					<WhatsAppLink
 						href={`https://api.whatsapp.com/send/?phone=%2B905322409058&text=Merhaba%21++${product.stockCode}+stok+kodlu+%C3%BCr%C3%BCn%C3%BCn%C3%BCz+hakk%C4%B1nda+bilgi+almak+istiyorum.&type=phone_number&app_absent=0`}
 						target="_blank"
 					>
 						<div className="product_card__button_whatsapp w-100">
 							<FaWhatsapp /> İletişim
 						</div>
-					</Link>
+					</WhatsAppLink>
 					<Link href={`/${product.slug}`}>
 						<div className="product_card__button_detail w-100">
 							<FaSearch /> Detay Gör

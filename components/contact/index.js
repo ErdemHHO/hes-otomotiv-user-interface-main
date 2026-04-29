@@ -9,8 +9,10 @@ import {
 	FaFacebookSquare,
 	FaInstagramSquare,
 	FaWhatsapp,
+
 } from 'react-icons/fa';
 import Link from 'next/link';
+import WhatsAppLink from '@/components/WhatsAppLink';
 
 function index() {
 	useEffect(() => {
@@ -99,12 +101,12 @@ function index() {
 										<FaWhatsapp size={60} className="contact-icon" />
 										<div className="contact-text">
 											<h2>Whatsapp</h2>
-											<Link
+											<WhatsAppLink
 												href="https://api.whatsapp.com/send/?phone=%2B905322409058&text=Merhaba%21++%C3%9Cr%C3%BCnleriniz+hakk%C4%B1nda+bilgi+almak+istiyorum.&type=phone_number&app_absent=0"
 												target="_blank"
 											>
 												<p>+90 532 240 90 58</p>
-											</Link>
+											</WhatsAppLink>
 										</div>
 									</div>
 								</div>

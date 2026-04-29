@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { FaPhoneAlt, FaMailBulk, FaMapMarkedAlt, FaInstagram, FaFacebook, FaWhatsapp } from 'react-icons/fa';
 import styles from './styles.module.css';
 import Link from 'next/link';
+import WhatsAppLink from '@/components/WhatsAppLink';
 
 function Header() {
   return (
@@ -62,9 +63,9 @@ function Header() {
           <Image src="/images/brands/mini.png" alt="MINI" className={styles.logo2} height={40} width={75} />
         </div>
         <div className="d-flex mt-2">
-          <Link href="https://api.whatsapp.com/send/?phone=%2B905322409058&text=Merhaba%21++%C3%9Cr%C3%BCnleriniz+hakk%C4%B1nda+bilgi+almak+istiyorum.&type=phone_number&app_absent=0" target="_blank" aria-label="WhatsApp ile iletişim">
+          <WhatsAppLink href="https://api.whatsapp.com/send/?phone=%2B905322409058&text=Merhaba%21++%C3%9Cr%C3%BCnleriniz+hakk%C4%B1nda+bilgi+almak+istiyorum.&type=phone_number&app_absent=0" target="_blank" aria-label="WhatsApp ile iletişim">
             <FaWhatsapp className={styles.icon2} />
-          </Link>
+          </WhatsAppLink>
           <Link href="https://www.facebook.com/hesotomotiv34/" target="_blank" aria-label="Facebook sayfamız">
             <FaFacebook className={styles.icon2} />
           </Link>
